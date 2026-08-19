@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CourseRouteImport } from './routes/course'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as ShippingRouteImport } from './routes/shipping'
+import { Route as PreOrdersIndexRouteImport } from './routes/pre-orders.index'
+import { Route as PreOrdersSlugRouteImport } from './routes/pre-orders.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CourseRoute = CourseRouteImport.update({
+  id: '/course',
+  path: '/course',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShippingRoute = ShippingRouteImport.update({
+  id: '/shipping',
+  path: '/shipping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreOrdersIndexRoute = PreOrdersIndexRouteImport.update({
+  id: '/pre-orders/',
+  path: '/pre-orders/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PreOrdersSlugRoute = PreOrdersSlugRouteImport.update({
+  id: '/pre-orders/$slug',
+  path: '/pre-orders/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/course': typeof CourseRoute
+  '/faqs': typeof FaqsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/shipping': typeof ShippingRoute
+  '/pre-orders/$slug': typeof PreOrdersSlugRoute
+  '/pre-orders/': typeof PreOrdersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/course': typeof CourseRoute
+  '/faqs': typeof FaqsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/shipping': typeof ShippingRoute
+  '/pre-orders/$slug': typeof PreOrdersSlugRoute
+  '/pre-orders': typeof PreOrdersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/course': typeof CourseRoute
+  '/faqs': typeof FaqsRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/shipping': typeof ShippingRoute
+  '/pre-orders/$slug': typeof PreOrdersSlugRoute
+  '/pre-orders/': typeof PreOrdersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/course'
+    | '/faqs'
+    | '/how-it-works'
+    | '/shipping'
+    | '/pre-orders/$slug'
+    | '/pre-orders/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/course'
+    | '/faqs'
+    | '/how-it-works'
+    | '/shipping'
+    | '/pre-orders/$slug'
+    | '/pre-orders'
+  id:
+    | '__root__'
+    | '/'
+    | '/course'
+    | '/faqs'
+    | '/how-it-works'
+    | '/shipping'
+    | '/pre-orders/$slug'
+    | '/pre-orders/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CourseRoute: typeof CourseRoute
+  FaqsRoute: typeof FaqsRoute
+  HowItWorksRoute: typeof HowItWorksRoute
+  ShippingRoute: typeof ShippingRoute
+  PreOrdersSlugRoute: typeof PreOrdersSlugRoute
+  PreOrdersIndexRoute: typeof PreOrdersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/course': {
+      id: '/course'
+      path: '/course'
+      fullPath: '/course'
+      preLoaderRoute: typeof CourseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shipping': {
+      id: '/shipping'
+      path: '/shipping'
+      fullPath: '/shipping'
+      preLoaderRoute: typeof ShippingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pre-orders/': {
+      id: '/pre-orders/'
+      path: '/pre-orders'
+      fullPath: '/pre-orders/'
+      preLoaderRoute: typeof PreOrdersIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pre-orders/$slug': {
+      id: '/pre-orders/$slug'
+      path: '/pre-orders/$slug'
+      fullPath: '/pre-orders/$slug'
+      preLoaderRoute: typeof PreOrdersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CourseRoute: CourseRoute,
+  FaqsRoute: FaqsRoute,
+  HowItWorksRoute: HowItWorksRoute,
+  ShippingRoute: ShippingRoute,
+  PreOrdersSlugRoute: PreOrdersSlugRoute,
+  PreOrdersIndexRoute: PreOrdersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
