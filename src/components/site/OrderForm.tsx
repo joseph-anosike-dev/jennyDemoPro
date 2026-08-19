@@ -93,7 +93,7 @@ export function OrderForm({
                 <Label htmlFor="product">Product</Label>
                 <select
                   id="product"
-                  defaultValue={product?.slug ?? products[0].slug}
+                  defaultValue={product?.slug ?? products[0]?.slug}
                   className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 >
                   {products.map((p) => (
