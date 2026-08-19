@@ -21,7 +21,7 @@ export const Route = createFileRoute("/shipping")({
       },
     ],
   }),
-  component: ShippingPage;
+  component: ShippingPage,
 });
 
 function ShippingPage() {

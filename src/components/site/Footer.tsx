@@ -79,7 +79,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <Link to="/policy" className="hover:text-gold">
+              <Link to="/faqs" className="hover:text-gold">
                 Order Policy & Disclaimer
               </Link>
             </li>
